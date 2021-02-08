@@ -1,0 +1,41 @@
+{
+  "extends": "stylelint-config-htmlacademy",
+
+  "rules": {
+    "declaration-no-important": true,
+    "indentation": [2, {"ignore": ["inside-parens"]}],
+    "function-comma-space-after": "always-single-line",
+    "function-parentheses-space-inside": "never-single-line",
+    "string-quotes": "double",
+    "color-hex-case": "upper",
+    "at-rule-no-unknown": [true, {
+        "ignoreAtRules": [
+          "mixin",
+          "define-mixin",
+          "include",
+          "content",
+          "rules",
+          "each",
+          "if",
+          "else",
+          "return",
+          "function",
+          "use",
+          "for"
+        ]
+      }],
+    "at-rule-empty-line-before": ["always", {
+        "except": [
+            "first-nested",
+            "blockless-after-blockless"
+        ],
+        "ignore": [
+            "after-comment",
+            "inside-block"
+        ]
+    }],
+    "block-closing-brace-newline-after": ["always", {
+        "ignoreAtRules": ["if", "else"]
+    }]
+  }
+}
