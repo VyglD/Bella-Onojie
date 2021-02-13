@@ -13,7 +13,8 @@ const Folder = {
   MARKUP: `markup`,
 };
 
-const PAGES_DIR = `${Folder.SRC}/${Folder.MARKUP}/pug/pages/`;
+const PUG_DIR = `${Folder.SRC}/${Folder.MARKUP}/pug/`;
+const PAGES_DIR = `${PUG_DIR}/pages/`;
 const PAGES = fs.readdirSync(PAGES_DIR).filter((fileName) => fileName.endsWith(`.pug`));
 
 const isProd = process.argv
@@ -150,7 +151,7 @@ module.exports = {
     maxAssetSize: 512000,
   },
   devServer: {
-    contentBase: [path.join(__dirname, Folder.BUILD), PAGES_DIR],
+    contentBase: [path.join(__dirname, Folder.BUILD), PUG_DIR],
     watchContentBase: true,
     compress: true,
     port: 8768,
