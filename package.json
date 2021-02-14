@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "description": "Тестовый проект",
+  "homepage": "/projects/bella-onojie",
   "devDependencies": {
     "@babel/core": "7.12.13",
     "@babel/preset-env": "7.12.13",

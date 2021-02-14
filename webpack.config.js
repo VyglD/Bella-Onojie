@@ -6,6 +6,10 @@ const HtmlWebpackPlugin = require(`html-webpack-plugin`);
 const MiniCssExtractPlugin = require(`mini-css-extract-plugin`);
 const CssMinimizerPlugin = require(`css-minimizer-webpack-plugin`);
 
+const appDirectory = fs.realpathSync(process.cwd());
+const resolveApp = (relativePath) => path.resolve(appDirectory, relativePath);
+const publicPath = require(resolveApp(`package.json`)).homepage;
+
 const Folder = {
   SRC: `source`,
   BUILD: `build`,
@@ -91,7 +95,7 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, Folder.BUILD),
-    publicPath: `/`,
+    publicPath: isDev ? `/` : publicPath,
     filename: `js/[name].[contenthash].bundle.js`,
     assetModuleFilename: `static/[hash][ext][query]`,
   },
@@ -103,7 +107,7 @@ module.exports = {
         use: [`babel-loader`],
       },
       {
-        test: /\.(?:ico|gif|png|jpg|jpeg|svg)$/i,
+        test: /\.(?:ico|gif|png|jpg|jpeg|svg|webp)$/i,
         type: `asset/resource`,
         generator: {
           filename: `img/[hash][ext][query]`,

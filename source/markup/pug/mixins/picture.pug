@@ -1,0 +1,14 @@
+mixin picture(props)
+  - const {img, width, height, alt} = props;
+    picture
+      source(
+        type="image/webp"
+        srcset=`${require(`../../../images/${img}.webp`)}, ${require(`../../../images/${img}@2x.webp`)} 2x`
+      )
+      img(
+        src=require(`../../../images/${img}.png`)
+        srcset=`${require(`../../../images/${img}@2x.png`)} 2x`
+        width=width
+        height=height
+        alt=alt
+      )
