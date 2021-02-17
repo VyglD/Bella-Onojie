@@ -1,0 +1,30 @@
+.prime-header {
+  padding: 17px;
+}
+
+.prime-header__navbar-brand {
+  margin-left: 15px;
+  padding: 0;
+}
+
+.prime-header__navbar-toggler {
+  margin: 16px 0 18px;
+  padding: 10px;
+
+  border: none;
+}
+
+.prime-header__navbar-toggler:not(:disabled) {
+  &:hover {
+    opacity: 0.5;
+  }
+
+  &:active {
+    opacity: 0.1;
+  }
+}
+
+.prime-header__navbar-toggler-icon {
+  width: 24px;
+  height: 20px;
+}

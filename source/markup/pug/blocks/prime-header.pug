@@ -1,23 +1,38 @@
 include ../mixins/picture
 
-header(class="prime-header")
+header(
+  class="prime-header navbar navbar-expand-md navbar-light container-xl d-flex align-items-start"
+)
   +picture({
+    pictureClass: `prime-header__navbar-brand navbar-brand`,
     img: `logo`,
     width: 104,
     height: 52,
     alt: `Bella Onojie`
   })
-  nav
-    ul
-      li
-        a(href="#blank").
+  button(
+    class="prime-header__navbar-toggler navbar-toggler"
+    type="button"
+    data-bs-toggle="collapse"
+    data-bs-target="#navbarNav"
+    aria-controls="navbarNav"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  )
+    span(
+      class="prime-header__navbar-toggler-icon navbar-toggler-icon"
+    )
+  nav(class="collapse navbar-collapse" id="navbarNav")
+    ul(class="navbar-nav nav justify-content-end w-100")
+      li(class="nav-item")
+        a(class="prime-header__nav-link nav-link active" href="#blank" aria-current="page" ).
           Home
-      li
-        a(href="#blank").
+      li(class="nav-item")
+        a(class="prime-header__nav-link nav-link" href="#blank").
           Product
-      li
-        a(href="#blank").
+      li(class="nav-item")
+        a(class="prime-header__nav-link nav-link" href="#blank").
           Faq
-      li
-        a(href="#blank").
+      li(class="nav-item")
+        a(class="prime-header__nav-link nav-link" href="#blank").
           Contact
