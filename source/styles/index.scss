@@ -1,3 +1,31 @@
+@import "./fonts.scss";
+
+$font-family-base: "Montserrat", "Tahoma", "Geneva", "Verdana", sans-serif;
+
+$xs: 0;
+$sm: 414px;
+$md: 768px;
+$lg: 992px;
+$xl: 1320px;
+$xxl: 1440px;
+
+$grid-breakpoints: (
+  xs: $xs,
+  sm: $sm,
+  md: $md,
+  lg: $lg,
+  xl: $xl,
+  xxl: $xxl
+);
+
+$container-max-widths: (
+  sm: $sm,
+  md: $md,
+  lg: $lg,
+  xl: $xl,
+  xxl: $xxl
+);
+
 @import "~bootstrap/scss/bootstrap";
 
 html {

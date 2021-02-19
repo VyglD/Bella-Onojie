@@ -1,10 +1,11 @@
 include ../mixins/picture
 
 header(
-  class="prime-header navbar navbar-expand-md navbar-light container-xl d-flex align-items-start"
+  class="prime-header navbar navbar-expand-md navbar-light d-flex align-items-start container-xxl"
 )
   +picture({
-    pictureClass: `prime-header__navbar-brand navbar-brand`,
+    pictureClass: `prime-header__navbar-brand-wrapper navbar-brand`,
+    imgClass: `prime-header__navbar-brand`,
     img: `logo`,
     width: 104,
     height: 52,
@@ -22,17 +23,17 @@ header(
     span(
       class="prime-header__navbar-toggler-icon navbar-toggler-icon"
     )
-  nav(class="collapse navbar-collapse" id="navbarNav")
-    ul(class="navbar-nav nav justify-content-end w-100")
-      li(class="nav-item")
-        a(class="prime-header__nav-link nav-link active" href="#blank" aria-current="page" ).
+  nav(class="prime-header__nav collapse navbar-collapse my-auto" id="navbarNav")
+    ul(class="prime-header__navbar-nav navbar-nav nav justify-content-end ms-auto")
+      li(class="prime-header__nav-item nav-item")
+        a(class="prime-header__nav-link nav-link active text-center" href="#blank" aria-current="page" ).
           Home
-      li(class="nav-item")
-        a(class="prime-header__nav-link nav-link" href="#blank").
+      li(class="prime-header__nav-item nav-item")
+        a(class="prime-header__nav-link nav-link text-center" href="#blank").
           Product
-      li(class="nav-item")
-        a(class="prime-header__nav-link nav-link" href="#blank").
+      li(class="prime-header__nav-item nav-item")
+        a(class="prime-header__nav-link nav-link text-center" href="#blank").
           Faq
-      li(class="nav-item")
-        a(class="prime-header__nav-link nav-link" href="#blank").
+      li(class="prime-header__nav-item nav-item")
+        a(class="prime-header__nav-link nav-link text-center" href="#blank").
           Contact

@@ -141,7 +141,7 @@ module.exports = {
       chunkFilename: `[id].css`,
     }),
   ],
-  devtool: isDev ? `eval-cheap-source-map` : isDev,
+  devtool: isDev ? `eval-cheap-source-map` : false,
   optimization: {
     minimize: isProd,
     minimizer: [new CssMinimizerPlugin()],
@@ -157,9 +157,7 @@ module.exports = {
   devServer: {
     contentBase: [path.join(__dirname, Folder.BUILD), PUG_DIR],
     watchContentBase: true,
-    compress: true,
     port: 8768,
-    hotOnly: true,
     open: true,
     historyApiFallback: true,
   },

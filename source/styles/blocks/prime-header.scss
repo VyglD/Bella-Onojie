@@ -2,13 +2,19 @@
   padding: 17px;
 }
 
-.prime-header__navbar-brand {
-  margin-left: 15px;
+.prime-header__navbar-brand-wrapper {
+  margin-left: 8px;
+  margin-right: 8px;
   padding: 0;
 }
 
+.prime-header__navbar-brand {
+  width: 104px;
+  height: 52px;
+}
+
 .prime-header__navbar-toggler {
-  margin: 16px 0 18px;
+  margin: 16px -6px 18px 0;
   padding: 10px;
 
   border: none;
@@ -27,4 +33,87 @@
 .prime-header__navbar-toggler-icon {
   width: 24px;
   height: 20px;
+}
+
+.prime-header__nav {
+  --custom-padding-x: 11px;
+  --custom-padding-y: 11px;
+
+  overflow: hidden;
+}
+
+.prime-header__navbar-nav .prime-header__nav-item .prime-header__nav-link {
+  padding: var(--custom-padding-y) var(--custom-padding-x);
+
+  outline: none;
+
+  &.active {
+    color: #FA4A0C;
+  }
+
+  &:not(:disabled) {
+    &:hover,
+    &:focus {
+      transform: scale(1.2);
+    }
+
+    &:hover {
+      opacity: 0.5;
+    }
+
+    &:active {
+      opacity: 0.2;
+    }
+  }
+}
+
+.prime-header__nav-link {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 28px;
+}
+
+@include media-breakpoint-up(md) {
+  .prime-header {
+    padding: 20px;
+  }
+
+  .prime-header__navbar-nav {
+    --custom-padding-x: 20px;
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  .prime-header {
+    padding: 25px 30px;
+  }
+
+  .prime-header__navbar-brand-wrapper {
+    margin-left: 51px;
+  }
+
+  .prime-header__navbar-brand {
+    width: 206px;
+    height: 102px;
+  }
+
+  .prime-header__navbar-nav {
+    --custom-padding-x: 30px;
+  }
+}
+
+@include media-breakpoint-up(xl) {
+  .prime-header {
+    padding: 27px 40px 28px;
+  }
+
+  .prime-header__navbar-nav {
+    margin-top: 1px;
+    margin-right: -47px;
+  }
+
+  .prime-header__navbar-nav .prime-header__nav-item .prime-header__nav-link {
+    padding-left: 57px;
+    padding-right: 58px;
+  }
 }
