@@ -1,0 +1,120 @@
+.banner {
+  --section-padding: 10px;
+
+  padding: 16px 0;
+
+  &::before {
+    content: none;
+
+    position: absolute;
+    top: -109px;
+    left: 0;
+    z-index: -1;
+
+    display: block;
+    width: 100%;
+    height: 619px;
+
+    background:
+      linear-gradient(0deg, var(--color-black-2-06), var(--color-black-2-06)),
+      url("../../images/banner-background.webp");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 1440px;
+  }
+}
+
+@media (min-resolution: $retina-dpi), (min-resolution: $retina-dppx) {
+  .banner {
+    &::before {
+      background-image: url("../../images/banner-background@2x.webp");
+    }
+  }
+}
+
+.banner__title {
+  padding: 0 var(--section-padding, 0);
+
+  color: var(--color-black-0, black);
+  font-weight: bold;
+  font-size: 36px;
+  line-height: 42px;
+}
+
+.banner__subtitle {
+  margin-top: 30px;
+  padding: 0;
+  padding-left: calc(var(--section-padding, 0) + 5px);
+  padding-right: calc(var(--section-padding, 0) + 8px);
+
+  color: var(--color-black-1, black);
+  font-weight: 500;
+  font-size: 24px;
+  letter-spacing: 0.01em;
+  line-height: 38px;
+}
+
+.banner__buttons-wrapper {
+  margin-top: 32px;
+  padding: 0 var(--section-padding, 0);
+}
+
+.banner__button {
+  margin: 17px;
+  margin-bottom: 0;
+}
+
+.banner__img {
+  width: 422px;
+  height: 492px;
+}
+
+@include media-breakpoint-down(md) {
+  .banner__img-wrapper {
+    margin-top: 22px;
+  }
+
+  .banner__img {
+    margin-left: -24px;
+  }
+}
+
+@include media-breakpoint-up(md) {
+  .banner {
+    &::before {
+      content: "";
+    }
+  }
+
+  .banner__title {
+    max-width: 971px;
+    padding: 0;
+
+    color: var(--color-white-0, white);
+    font-size: 58px;
+    line-height: 80px;
+  }
+
+  .banner__subtitle {
+    margin-top: 28px;
+
+    color: var(--color-white-0, white);
+  }
+
+  .banner__buttons-wrapper {
+    margin-top: 36px;
+    padding: 0 var(--section-padding, 0);
+  }
+
+  .banner__img-wrapper {
+    position: relative;
+    z-index: -1;
+
+    margin-top: -19px;
+  }
+
+  .banner__img {
+    width: 548px;
+    height: 640px;
+  }
+}

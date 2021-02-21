@@ -1,0 +1,18 @@
+$retina-dpi: 144dpi;
+$retina-dppx: 1.5dppx;
+
+$color-white-0: #FFFFFF;
+$color-orange-0: #FA4A0C;
+$color-black-2: #171010;
+
+:root {
+  --color-orange-0: #{$color-orange-0};
+  --color-orange-0-02: rgba(#{hex-to-rgb($color-orange-0)}, 0.2);
+  --color-orange-0-05: rgba(#{hex-to-rgb($color-orange-0)}, 0.5);
+  --color-white-0: #{$color-white-0};
+  --color-white-0-05: rgba(#{hex-to-rgb($color-white-0)}, 0.5);
+  --color-black-0: #252B42;
+  --color-black-1: #737373;
+  --color-black-2: #{$color-black-2};
+  --color-black-2-06: rgba(#{hex-to-rgb($color-black-2)}, 0.6);
+}

@@ -1,15 +1,22 @@
 include ../mixins/picture
 
-section(class="banner")
-  h2.
-    Why stay hungry when you can order form Bella Onojie
-  p.
+section(class="banner position-relative container-xxl")
+  h2(class="banner__title mx-auto text-center").
+    #[span(class="d-md-block") Why stay hungry when]
+    you can order form Bella Onojie
+  p(class="banner__subtitle mx-auto text-center").
     Download the bella onoje’s food app now on
-  button(type="button").
-    Playstore
-  button(type="button").
-    App store
+  div(class="banner__buttons-wrapper d-flex flex-wrap justify-content-center")
+    button(class="banner__button btn action-button" type="button").
+      Playstore
+    button(
+      class="banner__button btn action-button action-button--inverted action-button--custom"
+      type="button"
+    ).
+      App store
   +picture({
+    pictureClass: `banner__img-wrapper d-flex justify-content-center w-100 mw-100 overflow-hidden`,
+    imgClass: `banner__img`,
     img: `appearance`,
     width: 422,
     height: 492,

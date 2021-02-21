@@ -1,41 +1,13 @@
-@import "./fonts.scss";
+@import "./config/fonts.scss";
 
-$font-family-base: "Montserrat", "Tahoma", "Geneva", "Verdana", sans-serif;
-
-$xs: 0;
-$sm: 414px;
-$md: 768px;
-$lg: 992px;
-$xl: 1320px;
-$xxl: 1440px;
-
-$grid-breakpoints: (
-  xs: $xs,
-  sm: $sm,
-  md: $md,
-  lg: $lg,
-  xl: $xl,
-  xxl: $xxl
-);
-
-$container-max-widths: (
-  sm: $sm,
-  md: $md,
-  lg: $lg,
-  xl: $xl,
-  xxl: $xxl
-);
-
+// bootstrap
+@import "./config/bootstap-reboot.scss";
 @import "~bootstrap/scss/bootstrap";
 
-html {
-  box-sizing: border-box;
-}
-
-*,
-*::before,
-*::after {
-  box-sizing: inherit;
-}
-
+// custom
+@import "./config/functions.scss";
+@import "./config/variables.scss";
 @import "./blocks/prime-header.scss";
+@import "./blocks/prime-main.scss";
+@import "./blocks/banner.scss";
+@import "./blocks/action-button.scss";

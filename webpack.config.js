@@ -57,9 +57,15 @@ const getStyleConfig = () => {
       },
     },
     {
+      loader: `resolve-url-loader`,
+      options: {
+        sourceMap: isDev,
+      },
+    },
+    {
       loader: `sass-loader`,
       options: {
-        sourceMap: isDev
+        sourceMap: true
       }
     }
   ];
