@@ -1,9 +1,10 @@
-section(class="download")
-  h2.
+section(class="download container-xxl")
+  h2(class="download__title text-center").
     Download the app now.
-  p.
+  p(class="download__subtitle text-center").
     Available on your favorite store. Start your premium experience now
-  button(type="button").
-    Playstore
-  button(type="button").
-    App store
+  div(class="download__buttons-wrapper d-flex flex-wrap justify-content-center mx-auto")
+    button(class="download__button download__button--android action-button action-button--inverted" type="button").
+      Playstore
+    button(class="download__button download__button--apple action-button" type="button").
+      App store

@@ -1,0 +1,56 @@
+.download {
+  min-height: 509px;
+  padding: 110px 24px;
+
+  background-color: var(--color-black-1, black);
+}
+
+.download__title {
+  color: var(--color-white-0, white);
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 57px;
+}
+
+.download__subtitle {
+  margin-top: 30px;
+  padding: 0 25px;
+
+  color: var(--color-gray-0, gray);
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 30px;
+}
+
+.download__buttons-wrapper {
+  max-width: 362px;
+  margin-top: 20px;
+}
+
+.download__button {
+  margin: 10px 4px 0;
+
+  border-radius: 10px;
+
+  &--android {
+    min-width: 137px;
+  }
+
+  &--apple {
+    min-width: 186px;
+  }
+}
+
+@include media-breakpoint-up(md) {
+  .download {
+    background:
+      linear-gradient(0deg, var(--color-black-3-06), var(--color-black-3-06)),
+      url("../../images/download-background.webp");
+    background-repeat: no-repeat;
+    background-position: top center;
+  }
+
+  .download__title {
+    margin-top: 33px;
+  }
+}
