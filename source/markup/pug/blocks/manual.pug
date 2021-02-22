@@ -6,22 +6,34 @@ include ../mixins/picture
     RIGHT: `right`,
   };
 
-mixin manual-step(props, imgProps, type = StepType.LEFT)
-  - const {title, subtitle, description} = props;
-    article
-      div
-        h3.
-          #{title}
-        p.
-          #{subtitle}
-        p.
-          #{description}
-      +picture(imgProps)
+mixin manual-step(stepName, props, imgProps, type = StepType.LEFT)
+  -
+    const {title, subtitle, description} = props;
+    const directionClass = type === StepType.RIGHT ? `flex-row` : `flex-row-reverse`
 
-section(class="manual")
-  h2.
+  article(class=`manual__step manual__step--${stepName} d-md-flex ${directionClass} justify-content-between w-100 wx-auto overflow-hidden`)
+    div(class="manual__content")
+      h3(class="manual__step-title").
+        #{title}
+      p(class="manual__step-subtitle").
+        #{subtitle}
+      p(class=`manual__step-description manual__step-description--${stepName}`).
+        #{description}
+    +picture(
+      Object.assign(
+        imgProps,
+        {
+          pictureClass: `manual__step-wrapper-img manual__step-wrapper-img--${stepName} d-flex justify-content-center flex-shrink-0 overflow-hidden`,
+          imgClass: `manual__step-img manual__step-img--${stepName}`,
+        }
+      )
+    )
+
+section(class="manual container-xxl")
+  h2(class="manual__title text-center").
     How the app works
   +manual-step(
+    `create`,
     {
       title: `Create an account`,
       subtitle: `Create/login to an existing account to get started`,
@@ -35,8 +47,9 @@ section(class="manual")
     }
   )
   +manual-step(
+    `explore`,
     {
-      title: `Explore varieties`,
+      title: `Explore while shopping`,
       subtitle: `Shop for your favorites meal as e dey hot.`,
       description: `Shop for your favorite meals or drinks and enjoy while doing it.`
     },
@@ -49,6 +62,7 @@ section(class="manual")
     StepType.RIGHT
   )
   +manual-step(
+    `checkout`,
     {
       title: `Checkout`,
       subtitle: `When you done check out and get it delivered.`,

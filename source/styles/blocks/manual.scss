@@ -1,0 +1,164 @@
+.manual {
+  --section-padding: 20px;
+
+  max-width: 1041px;
+  margin-top: 52px;
+  padding: var(--section-padding, 0) 0 189px;
+
+  &::before {
+    content: "";
+
+    display: block;
+    width: 100%;
+    max-width: 884px;
+    height: 3px;
+    margin: 0 auto;
+
+    background-color: var(--color-gray-0, gray);
+  }
+}
+
+.manual__title {
+  margin: 56px 0 64px;
+  padding: 0 var(--section-padding, 0);
+
+  color: var(--color-black-0, black);
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 36px;
+}
+
+.manual__step {
+  margin-top: 35px;
+
+  &--checkout {
+    margin-top: 28px;
+  }
+}
+
+.manual__content {
+  padding: var(--section-padding, 0);
+}
+
+.manual__step-title {
+  color: var(--color-orange-0, orange);
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 36px;
+  text-align: center;
+}
+
+.manual__step-subtitle {
+  margin-top: 39px;
+  padding: 0 24px;
+
+  color: var(--color-black-1, black);
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 57px;
+  text-align: center;
+}
+
+.manual__step-description {
+  width: 68%;
+  margin: 51px auto 0;
+
+  color: var(--color-black-2, black);
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 38px;
+  text-align: center;
+
+  &--checkout {
+    margin-top: 47px;
+  }
+}
+
+.manual__step-wrapper-img {
+  margin: 42px auto 0;
+
+  &--explore {
+    margin-top: 10px;
+  }
+
+  &--checkout {
+    margin-top: 14px;
+  }
+}
+
+.manual__step-img {
+  width: 302px;
+  height: 525px;
+  margin-left: 6px;
+
+  &--explore {
+    width: 267px;
+  }
+
+  &--checkout {
+    width: 279px;
+    height: 511px;
+    margin-left: -15px;
+  }
+}
+
+@include media-breakpoint-up(md) {
+  .manual {
+    &::before {
+      margin-top: 39px;
+    }
+  }
+
+  .manual__title {
+    margin-top: 71px;
+
+    font-size: 44px;
+    line-height: 36px;
+  }
+
+  .manual__step {
+    margin-top: 137px;
+  }
+
+  .manual__content {
+    max-width: 611px;
+    margin-top: 156px;
+    padding: 0;
+    padding-left: 44px;
+  }
+
+  .manual__step-title {
+    text-align: left;
+  }
+
+  .manual__step-subtitle {
+    margin-top: 16px;
+    padding: 0;
+
+    text-align: left;
+  }
+
+  .manual__step-description {
+    width: auto;
+    max-width: 460px;
+    margin: 28px 0 0;
+
+    text-align: left;
+  }
+
+  .manual__step-wrapper-img {
+    margin: 0;
+
+    &--checkout {
+      padding-right: 20px;
+    }
+  }
+
+  .manual__step-img {
+    margin-left: 0;
+
+    &--explore {
+      margin-top: -6px;
+    }
+  }
+}

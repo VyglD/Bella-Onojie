@@ -3,7 +3,7 @@ $retina-dppx: 1.5dppx;
 
 $color-white-0: #FFFFFF;
 $color-orange-0: #FA4A0C;
-$color-black-2: #171010;
+$color-black-3: #171010;
 
 :root {
   --color-orange-0: #{$color-orange-0};
@@ -11,8 +11,10 @@ $color-black-2: #171010;
   --color-orange-0-05: rgba(#{hex-to-rgb($color-orange-0)}, 0.5);
   --color-white-0: #{$color-white-0};
   --color-white-0-05: rgba(#{hex-to-rgb($color-white-0)}, 0.5);
-  --color-black-0: #252B42;
-  --color-black-1: #737373;
-  --color-black-2: #{$color-black-2};
-  --color-black-2-06: rgba(#{hex-to-rgb($color-black-2)}, 0.6);
+  --color-black-0: #000000;
+  --color-black-1: #252B42;
+  --color-black-2: #737373;
+  --color-black-3: #{$color-black-3};
+  --color-black-3-06: rgba(#{hex-to-rgb($color-black-3)}, 0.6);
+  --color-gray-0: #E4E4E4;
 }

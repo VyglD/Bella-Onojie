@@ -16,7 +16,7 @@
     height: 619px;
 
     background:
-      linear-gradient(0deg, var(--color-black-2-06), var(--color-black-2-06)),
+      linear-gradient(0deg, var(--color-black-3-06), var(--color-black-3-06)),
       url("../../images/banner-background.webp");
     background-position: center;
     background-repeat: no-repeat;
@@ -35,7 +35,7 @@
 .banner__title {
   padding: 0 var(--section-padding, 0);
 
-  color: var(--color-black-0, black);
+  color: var(--color-black-1, black);
   font-weight: bold;
   font-size: 36px;
   line-height: 42px;
@@ -47,7 +47,7 @@
   padding-left: calc(var(--section-padding, 0) + 5px);
   padding-right: calc(var(--section-padding, 0) + 8px);
 
-  color: var(--color-black-1, black);
+  color: var(--color-black-2, black);
   font-weight: 500;
   font-size: 24px;
   letter-spacing: 0.01em;
