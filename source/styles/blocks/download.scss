@@ -50,6 +50,16 @@
     background-position: top center;
   }
 
+  @media (min-resolution: $retina-dpi), (min-resolution: $retina-dppx) {
+    .banner {
+      &::before {
+        background:
+          linear-gradient(0deg, var(--color-black-3-06), var(--color-black-3-06)),
+          url("../../images/download-background@2x.webp");
+      }
+    }
+  }
+
   .download__title {
     margin-top: 33px;
   }
