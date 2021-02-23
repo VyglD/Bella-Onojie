@@ -6,10 +6,11 @@ mixin picture(props)
       img,
       width,
       height,
-      alt
+      alt,
+      additions
     } = props;
 
-  picture(class=pictureClass)
+  picture(class=pictureClass)&attributes(additions)
     source(
       type="image/webp"
       srcset=`${require(`../../../images/${img}.webp`)}, ${require(`../../../images/${img}@2x.webp`)} 2x`

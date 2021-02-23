@@ -1,7 +1,7 @@
 .manual {
   --section-padding: 20px;
 
-  max-width: 1041px;
+  max-width: 1061px;
   margin-top: 52px;
   padding: var(--section-padding, 0) 0 189px;
 
@@ -30,6 +30,7 @@
 
 .manual__step {
   margin-top: 35px;
+  padding: 0 10px;
 
   &--checkout {
     margin-top: 28px;

@@ -1,10 +1,22 @@
 section(class="download container-xxl")
-  h2(class="download__title text-center").
+  h2(class="download__title text-center" data-aos="fade-up").
     Download the app now.
-  p(class="download__subtitle text-center").
+  p(class="download__subtitle text-center" data-aos="fade-up").
     Available on your favorite store. Start your premium experience now
   div(class="download__buttons-wrapper d-flex flex-wrap justify-content-center mx-auto")
-    button(class="download__button download__button--android action-button action-button--inverted" type="button").
+    button(
+      class="download__button download__button--android action-button action-button--inverted"
+      type="button"
+      data-aos="fade-right"
+      data-aos-easing="ease"
+      data-blank-status
+    ).
       Playstore
-    button(class="download__button download__button--apple action-button" type="button").
+    button(
+      class="download__button download__button--apple action-button"
+      type="button"
+      data-aos="fade-left"
+      data-aos-easing="ease"
+      data-blank-status
+    ).
       App store

@@ -1,17 +1,26 @@
 include ../mixins/picture
 
 section(class="banner position-relative container-xxl")
-  h2(class="banner__title mx-auto text-center").
+  h2(class="banner__title mx-auto text-center" data-aos="fade-up" data-aos-delay="50").
     #[span(class="d-md-block") Why stay hungry when]
     you can order form Bella Onojie
-  p(class="banner__subtitle mx-auto text-center").
+  p(class="banner__subtitle mx-auto text-center" data-aos="fade-up" data-aos-delay="100").
     Download the bella onoje’s food app now on
   div(class="banner__buttons-wrapper d-flex flex-wrap justify-content-center")
-    button(class="banner__button btn action-button" type="button").
+    button(
+      class="banner__button btn action-button"
+      type="button"
+      data-aos="fade-right"
+      data-aos-delay="150"
+      data-blank-status
+    ).
       Playstore
     button(
       class="banner__button btn action-button action-button--inverted action-button--custom"
       type="button"
+      data-aos="fade-left"
+      data-aos-delay="150"
+      data-blank-status
     ).
       App store
   +picture({
@@ -20,5 +29,9 @@ section(class="banner position-relative container-xxl")
     img: `appearance`,
     width: 422,
     height: 492,
-    alt: `Appearance of our app`
+    alt: `Appearance of our app`,
+    additions: {
+      "data-aos": "fade-up",
+      "data-aos-delay": "200",
+    }
   })

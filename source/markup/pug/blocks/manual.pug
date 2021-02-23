@@ -9,10 +9,11 @@ include ../mixins/picture
 mixin manual-step(stepName, props, imgProps, type = StepType.LEFT)
   -
     const {title, subtitle, description} = props;
-    const directionClass = type === StepType.RIGHT ? `flex-row` : `flex-row-reverse`
+    const directionClass = type === StepType.RIGHT ? `flex-row` : `flex-row-reverse`;
+    const animationName = type === StepType.RIGHT ? `fade-right` : `fade-left`;
 
   article(class=`manual__step manual__step--${stepName} d-md-flex ${directionClass} justify-content-between w-100 wx-auto overflow-hidden`)
-    div(class="manual__content")
+    div(class="manual__content" data-aos=animationName)
       h3(class="manual__step-title").
         #{title}
       p(class="manual__step-subtitle").
@@ -25,12 +26,16 @@ mixin manual-step(stepName, props, imgProps, type = StepType.LEFT)
         {
           pictureClass: `manual__step-wrapper-img manual__step-wrapper-img--${stepName} d-flex justify-content-center flex-shrink-0 overflow-hidden`,
           imgClass: `manual__step-img manual__step-img--${stepName}`,
+          additions: {
+            "data-aos": "fade-up",
+            "data-aos-offset": 200,
+          }
         }
       )
     )
 
 section(class="manual container-xxl")
-  h2(class="manual__title text-center").
+  h2(class="manual__title text-center" data-aos="fade-up").
     How the app works
   +manual-step(
     `create`,
