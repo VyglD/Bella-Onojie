@@ -1,9 +1,23 @@
+-
+  const path = require(`path`);
+  const fs = require(`fs`);
+
+  const fontsPath = `./source/fonts/`;
+  const pagePath = `./source/markup/pug/pages/`
+
+  const fonts = fs.readdirSync(fontsPath)
+    .filter((fileName) => fileName.endsWith(`.woff2`))
+    .map((fileName) => require(`../../../fonts/${fileName}`));
+
 doctype html
 html(lang="en")
   head
     meta(charset="UTF-8")
     meta(name="description" content="Bella Onojie - the best food app")
     meta(name="viewport" content="width=device-width,initial-scale=1.0")
+    each font in fonts
+      link(rel="preload" href=font as="font" type="font/woff2" crossorigin="anonymous")
+    link(rel="shortcut icon" href=`${require(`../../../images/favicon.ico`)}` type="image/x-icon")
     title.
       Bella Onojie
   body

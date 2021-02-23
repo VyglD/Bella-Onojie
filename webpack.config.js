@@ -116,14 +116,14 @@ module.exports = {
         test: /\.(?:ico|gif|png|jpg|jpeg|svg|webp)$/i,
         type: `asset/resource`,
         generator: {
-          filename: `img/[hash][ext][query]`,
+          filename: `img/[name].[hash][ext][query]`,
         },
       },
       {
         test: /\.(woff(2)?|eot|ttf|otf|)$/,
         type: `asset/resource`,
         generator: {
-          filename: `fonts/[hash][ext][query]`,
+          filename: `fonts/[name].[hash][ext][query]`,
         },
       },
       {
@@ -137,7 +137,7 @@ module.exports = {
     ],
   },
   plugins: [
-    new CleanWebpackPlugin(),
+    new CleanWebpackPlugin({dry: true}),
     ...PAGES.map((page) => new HtmlWebpackPlugin({
       template: `${PAGES_DIR}/${page}`,
       filename: `./${page.replace(/\.pug/, `.html`)}`
