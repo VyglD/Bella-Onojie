@@ -3,6 +3,7 @@ const path = require(`path`);
 const fs = require(`fs`);
 const HtmlWebpackPlugin = require(`html-webpack-plugin`);
 const MiniCssExtractPlugin = require(`mini-css-extract-plugin`);
+const SpriteLoaderPlugin = require(`svg-sprite-loader/plugin`);
 const CssMinimizerPlugin = require(`css-minimizer-webpack-plugin`);
 const TerserPlugin = require(`terser-webpack-plugin`);
 const RemovePlugin = require(`remove-files-webpack-plugin`);
@@ -14,9 +15,11 @@ const Folder = {
   MARKUP: `markup`,
 };
 
-const PUG_DIR = `${Folder.MARKUP}/pug/`;
-const PAGES_DIR = `${PUG_DIR}/pages/`;
-const PAGES = fs.readdirSync(`${Folder.SRC}/${PAGES_DIR}`).filter((fileName) => fileName.endsWith(`.pug`));
+const PUG_FOLDER = `${Folder.MARKUP}/pug/`;
+const PUG_DIR = `${Folder.SRC}/${PUG_FOLDER}`;
+const PAGES_FOLDER = `${PUG_FOLDER}/pages/`;
+const PAGES_DIR = `${Folder.SRC}/${PAGES_FOLDER}`;
+const PAGES = fs.readdirSync(PAGES_DIR).filter((fileName) => fileName.endsWith(`.pug`));
 
 const isProd = process.argv
   .filter((arg) => arg.includes(`--mode`))
@@ -113,17 +116,33 @@ module.exports = {
         use: [`babel-loader`],
       },
       {
-        test: /\.(?:ico|gif|png|jpg|jpeg|svg|webp)$/i,
-        type: `asset/resource`,
-        generator: {
-          filename: `img/[name].[hash][ext][query]`,
+        test: /\.(?:ico|gif|png|jpg|jpeg|webp)$/i,
+        use: {
+          loader: `file-loader`,
+          options: {
+            esModule: false,
+            name: `img/[name].[hash].[ext][query]`,
+          },
         },
       },
       {
+        test: /\.svg$/,
+        use: [{
+          loader: `svg-sprite-loader`,
+          options: {
+            extract: true,
+            spriteFilename: `img/sprite.[hash].svg`,
+          },
+        }],
+      },
+      {
         test: /\.(woff(2)?|eot|ttf|otf|)$/,
-        type: `asset/resource`,
-        generator: {
-          filename: `fonts/[name].[hash][ext][query]`,
+        use: {
+          loader: `file-loader`,
+          options: {
+            esModule: false,
+            name: `fonts/[name].[hash].[ext][query]`,
+          },
         },
       },
       {
@@ -148,14 +167,15 @@ module.exports = {
       },
     }),
     ...PAGES.map((page) => new HtmlWebpackPlugin({
-      template: `${PAGES_DIR}/${page}`,
+      template: `${PAGES_FOLDER}/${page}`,
       filename: `./${page.replace(/\.pug/, `.html`)}`
     })),
     new MiniCssExtractPlugin({
       filename: `css/style.[name].[contenthash].css`
     }),
+    new SpriteLoaderPlugin()
   ],
-  devtool: isDev ? `eval-cheap-source-map` : `hidden-nosources-source-map`,
+  devtool: isDev ? `eval-cheap-module-source-map` : `hidden-nosources-source-map`,
   optimization: {
     minimize: isProd,
     minimizer: [
