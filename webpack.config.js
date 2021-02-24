@@ -1,14 +1,11 @@
 /* eslint-env node */
 const path = require(`path`);
 const fs = require(`fs`);
-const {CleanWebpackPlugin} = require(`clean-webpack-plugin`);
 const HtmlWebpackPlugin = require(`html-webpack-plugin`);
 const MiniCssExtractPlugin = require(`mini-css-extract-plugin`);
 const CssMinimizerPlugin = require(`css-minimizer-webpack-plugin`);
-
-const appDirectory = fs.realpathSync(process.cwd());
-const resolveApp = (relativePath) => path.resolve(appDirectory, relativePath);
-const publicPath = require(resolveApp(`package.json`)).homepage;
+const TerserPlugin = require(`terser-webpack-plugin`);
+const RemovePlugin = require(`remove-files-webpack-plugin`);
 
 const Folder = {
   SRC: `source`,
@@ -17,8 +14,10 @@ const Folder = {
   MARKUP: `markup`,
 };
 
-const PUG_DIR = `${Folder.SRC}/${Folder.MARKUP}/pug/`;
-const PAGES_DIR = `${PUG_DIR}/pages/`;
+const PUG_FOLDER = `${Folder.MARKUP}/pug/`;
+const PUG_DIR = `${Folder.SRC}/${PUG_FOLDER}`;
+const PAGES_FOLDER = `${PUG_FOLDER}/pages/`;
+const PAGES_DIR = `${Folder.SRC}/${PAGES_FOLDER}`;
 const PAGES = fs.readdirSync(PAGES_DIR).filter((fileName) => fileName.endsWith(`.pug`));
 
 const isProd = process.argv
@@ -60,6 +59,7 @@ const getStyleConfig = () => {
       loader: `resolve-url-loader`,
       options: {
         sourceMap: isDev,
+        removeCR: true,
       },
     },
     {
@@ -96,12 +96,14 @@ const getStyleConfig = () => {
 
 module.exports = {
   target: isDev ? `web` : `browserslist`,
+  mode: isDev ? `development` : `production`,
+  context: path.resolve(__dirname, Folder.SRC),
   entry: {
-    main: path.resolve(__dirname, `${Folder.SRC}/index.js`),
+    main: path.resolve(__dirname, `./source/index.js`),
   },
   output: {
     path: path.resolve(__dirname, Folder.BUILD),
-    publicPath: isDev ? `/` : publicPath,
+    publicPath: ``,
     filename: `js/[name].[contenthash].bundle.js`,
     assetModuleFilename: `static/[hash][ext][query]`,
   },
@@ -137,20 +139,31 @@ module.exports = {
     ],
   },
   plugins: [
-    new CleanWebpackPlugin({dry: true}),
+    new RemovePlugin({
+      before: {
+        test: [
+          {
+            folder: Folder.BUILD,
+            method: () => true
+          }
+        ],
+      },
+    }),
     ...PAGES.map((page) => new HtmlWebpackPlugin({
-      template: `${PAGES_DIR}/${page}`,
+      template: `${PAGES_FOLDER}/${page}`,
       filename: `./${page.replace(/\.pug/, `.html`)}`
     })),
     new MiniCssExtractPlugin({
-      filename: `css/style.[name].[contenthash].css`,
-      chunkFilename: `[id].css`,
+      filename: `css/style.[name].[contenthash].css`
     }),
   ],
-  devtool: isDev ? `eval-cheap-source-map` : false,
+  devtool: isDev ? `eval-cheap-source-map` : `hidden-nosources-source-map`,
   optimization: {
     minimize: isProd,
-    minimizer: [new CssMinimizerPlugin()],
+    minimizer: [
+      new CssMinimizerPlugin(),
+      new TerserPlugin()
+    ],
     runtimeChunk: {
       name: `runtime`,
     },
