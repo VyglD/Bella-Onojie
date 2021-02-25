@@ -6,6 +6,7 @@ const MiniCssExtractPlugin = require(`mini-css-extract-plugin`);
 const CssMinimizerPlugin = require(`css-minimizer-webpack-plugin`);
 const TerserPlugin = require(`terser-webpack-plugin`);
 const RemovePlugin = require(`remove-files-webpack-plugin`);
+const SvgStorePlugin = require(`external-svg-sprite-loader`);
 
 const Folder = {
   SRC: `source`,
@@ -115,17 +116,21 @@ module.exports = {
         use: [`babel-loader`],
       },
       {
-        test: /\.(?:ico|gif|png|jpg|jpeg|svg|webp)$/i,
+        test: /\.(?:ico|gif|png|jpg|jpeg|webp)$/i,
         type: `asset/resource`,
         generator: {
-          filename: `img/[name].[hash][ext][query]`,
+          filename: `img/[name].[hash].[ext][query]`,
         },
+      },
+      {
+        test: /\.svg$/,
+        loader: SvgStorePlugin.loader,
       },
       {
         test: /\.(woff(2)?|eot|ttf|otf|)$/,
         type: `asset/resource`,
         generator: {
-          filename: `fonts/[name].[hash][ext][query]`,
+          filename: `fonts/[name].[hash].[ext][query]`,
         },
       },
       {
@@ -155,6 +160,10 @@ module.exports = {
     })),
     new MiniCssExtractPlugin({
       filename: `css/style.[name].[contenthash].css`
+    }),
+    new SvgStorePlugin({
+      name: `img/sprite.[hash].svg`,
+      svgoOptions: {removeViewBox: false}
     }),
   ],
   devtool: isDev ? `eval-cheap-source-map` : `hidden-nosources-source-map`,
